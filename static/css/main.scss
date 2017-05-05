@@ -17,14 +17,12 @@
       transition: all .2s ease-in;
       background: goldenrod;
 
-
       &:hover{
         background: darkolivegreen;
         cursor: pointer;
         color: #ffffff;
       }
     }
-
 
     &:hover{
       transform : scale(1.1);

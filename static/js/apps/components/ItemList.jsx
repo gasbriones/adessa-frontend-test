@@ -14,10 +14,10 @@ export default class ItemList extends React.Component {
           items.map((item, index) => {
             return <li className="item col" key={index}>
               <div className="item-box">
-                  <img src={item.imageURL} />
-                  <h3>{item.name}</h3>
-                  <div>{item.currency} {item.price}</div>
-                  <button onClick={event => this.props.addToCart(item.id)}>Add to cart</button>
+                <img src={item.imageURL}/>
+                <h3>{item.name}</h3>
+                <div>{item.currency} {item.price}</div>
+                <button onClick={event => this.props.addToCart(item.id)}>Add to cart</button>
               </div>
             </li>
           })

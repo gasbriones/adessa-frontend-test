@@ -25,8 +25,8 @@ export default class ItemAdded extends React.Component {
             })
           }
         </ul>) : (
-          <div className="loading col-12">No se agrego ningun item</div>
+          <div className="loading col-12">No se agrego ningún item</div>
         )}
-    </div>)
+      </div>)
   }
 }
