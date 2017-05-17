@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aether7/adessa-frontend-test.git"
+    "url": ""
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aether7/adessa-frontend-test/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/aether7/adessa-frontend-test#readme",
+  "homepage": "",
   "dependencies": {
     "consolidate": "^0.14.5",
     "express": "^4.14.0",

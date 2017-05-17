@@ -1,10 +1,10 @@
 import React from 'react';
-import ItemList from './ItemList';
-import ItemsAdded from './ItemsAdded';
+import ItemsList from './ItemsList';
 
-export default class ShoppingCart extends React.Component {
+export default class Main extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       items: [],
       itemsAdded: [],
@@ -19,46 +19,39 @@ export default class ShoppingCart extends React.Component {
         this.setState({
           items: items.catalog
         })
-      }).catch(error => console.log('Error:', error));
+      }).catch(error => console.log('Error: ', error));
   }
 
   getItemById = (id) => {
-    return this.state.items.filter((obj) => {
-      return obj.id === id;
-    });
+    return this.state.items.filter((obj) => obj.id === id);
   };
 
-  _addToCart = (id) => {
-
+  addToCart = (id) => {
     let item = this.getItemById(id);
-
     this.setState((prevState) => ({
       itemsAdded: prevState.itemsAdded.concat(item),
       totalAmount: parseInt(prevState.totalAmount) + parseInt(item.map(x => x.price))
     }));
-
   };
 
-  _removeToCart = (id) => {
+  removeToCart = (id) => {
     let item = this.getItemById(id);
 
     this.setState((prevState) => ({
       itemsAdded: prevState.itemsAdded.filter(obj => {
-        return obj.id !== id;
+        return obj.id !==id
       }),
       totalAmount: parseInt(prevState.totalAmount) - parseInt(item.map(x => x.price))
-    }));
+    }))
   };
 
   render() {
-    return (
-      <div className="col-10 grid">
-        <ItemsAdded itemsAdded={this.state.itemsAdded} removeToCart={this._removeToCart}
-                    totalAmount={this.state.totalAmount}/>
-        <ItemList items={this.state.items} addToCart={this._addToCart}/>
-      </div>
-    )
+    return (<div className="col-10 grid">
+      <h1 className="col-12">Items Added</h1>
+      <h1>Total: {this.state.totalAmount}</h1>
+      <ItemsList items={this.state.itemsAdded} action={this.removeToCart} actionMsg={'Remove to Cart'}/>
+      <h1 className="col-12">Product List</h1>
+      <ItemsList items={this.state.items} action={this.addToCart} actionMsg={'Add to Cart'}/>
+    </div>);
   }
 }
-
-
